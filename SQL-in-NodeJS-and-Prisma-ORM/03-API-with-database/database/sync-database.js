@@ -1,6 +1,7 @@
 const { query } = require("./index");
 
 async function syncDatabase() {
+    //Create products
     await query(`
         CREATE TABLE IF NOT EXISTS products (
         id SERIAL PRIMARY KEY,
@@ -14,6 +15,19 @@ async function syncDatabase() {
         );
     `);
     console.log('Created "products" table.');
+
+    //Create customers
+    await query(`
+        CREATE TABLE IF NOT EXISTS customers (
+          id SERIAL PRIMARY KEY,
+          name VARCHAR(255) NOT NULL,
+          email VARCHAR(255) NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+      console.log('Created "customers" table.');
+
     process.exit(1);
 }
 
