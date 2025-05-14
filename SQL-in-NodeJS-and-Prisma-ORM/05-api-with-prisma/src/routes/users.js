@@ -19,13 +19,17 @@ router.post("/", async (req, res) => {
     res.status(201).json(newUser)
 })
 
-router.get(":id", async (req, res) =>{
+router.get("/:id", async (req, res) =>{
     const user = await prisma.user.findUnique({
         where: {
             id: +req.params.id
         },
         include: {
-            posts:true
+            posts: {
+                include: {
+                    tags: true
+                }
+            }
         }
     })
     res.json(user)

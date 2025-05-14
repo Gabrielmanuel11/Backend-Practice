@@ -28,4 +28,11 @@ model Post {
   updatedAt DateTime @updatedAt
   authorId  Int?
   author    User?    @relation(fields: [authorId], references: [id])
+  Tag Tag[] @relation("PostTags")
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(255)
+  posts Post[] @relation("PostTags")
 }
