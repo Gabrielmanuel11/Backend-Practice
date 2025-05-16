@@ -78,7 +78,7 @@ export const LeadCampaignStatus: typeof $Enums.LeadCampaignStatus
 
 /**
  * ##  Prisma Client ʲˢ
- *
+ * 
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
@@ -87,7 +87,7 @@ export const LeadCampaignStatus: typeof $Enums.LeadCampaignStatus
  * const groups = await prisma.group.findMany()
  * ```
  *
- *
+ * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
@@ -99,7 +99,7 @@ export class PrismaClient<
 
     /**
    * ##  Prisma Client ʲˢ
-   *
+   * 
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
@@ -108,12 +108,12 @@ export class PrismaClient<
    * const groups = await prisma.group.findMany()
    * ```
    *
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
 
   /**
    * Connect with the database
@@ -138,7 +138,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -150,7 +150,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -161,7 +161,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -173,7 +173,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -197,9 +197,7 @@ export class PrismaClient<
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
 
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
-    extArgs: ExtArgs
-  }>>
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.group`: Exposes CRUD operations for the **Group** model.
@@ -209,7 +207,7 @@ export class PrismaClient<
     * const groups = await prisma.group.findMany()
     * ```
     */
-  get group(): Prisma.GroupDelegate<ExtArgs, ClientOptions>;
+  get group(): Prisma.GroupDelegate<ExtArgs>;
 
   /**
    * `prisma.lead`: Exposes CRUD operations for the **Lead** model.
@@ -219,7 +217,7 @@ export class PrismaClient<
     * const leads = await prisma.lead.findMany()
     * ```
     */
-  get lead(): Prisma.LeadDelegate<ExtArgs, ClientOptions>;
+  get lead(): Prisma.LeadDelegate<ExtArgs>;
 
   /**
    * `prisma.campaign`: Exposes CRUD operations for the **Campaign** model.
@@ -229,7 +227,7 @@ export class PrismaClient<
     * const campaigns = await prisma.campaign.findMany()
     * ```
     */
-  get campaign(): Prisma.CampaignDelegate<ExtArgs, ClientOptions>;
+  get campaign(): Prisma.CampaignDelegate<ExtArgs>;
 
   /**
    * `prisma.leadCampaign`: Exposes CRUD operations for the **LeadCampaign** model.
@@ -239,7 +237,7 @@ export class PrismaClient<
     * const leadCampaigns = await prisma.leadCampaign.findMany()
     * ```
     */
-  get leadCampaign(): Prisma.LeadCampaignDelegate<ExtArgs, ClientOptions>;
+  get leadCampaign(): Prisma.LeadCampaignDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -260,6 +258,7 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
+  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -270,8 +269,6 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
-
-
   /**
    * Decimal.js
    */
@@ -280,7 +277,7 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-   * Metrics
+   * Metrics 
    */
   export type Metrics = runtime.Metrics
   export type Metric<T> = runtime.Metric<T>
@@ -298,14 +295,14 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 5.19.1
+   * Query Engine version: 69d742ee20b815d88e17e54db4a2a7a3b30324e3
    */
   export type PrismaVersion = {
     client: string
   }
 
-  export const prismaVersion: PrismaVersion
+  export const prismaVersion: PrismaVersion 
 
   /**
    * Utility Types
@@ -321,15 +318,15 @@ export namespace Prisma {
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   namespace NullTypes {
     /**
     * Type of `Prisma.DbNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class DbNull {
@@ -339,9 +336,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.JsonNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class JsonNull {
@@ -351,9 +348,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.AnyNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class AnyNull {
@@ -364,21 +361,21 @@ export namespace Prisma {
 
   /**
    * Helper for filtering JSON entries that have `null` on the database (empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const DbNull: NullTypes.DbNull
 
   /**
    * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const JsonNull: NullTypes.JsonNull
 
   /**
    * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const AnyNull: NullTypes.AnyNull
@@ -566,7 +563,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+      | {[P in keyof O as P extends K ? K : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -693,14 +690,11 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
-    globalOmitOptions: {
-      omit: GlobalOmitOptions
-    }
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
       modelProps: "group" | "lead" | "campaign" | "leadCampaign"
       txIsolationLevel: Prisma.TransactionIsolationLevel
@@ -757,10 +751,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.GroupUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.GroupUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$GroupPayload>[]
           }
           upsert: {
             args: Prisma.GroupUpsertArgs<ExtArgs>
@@ -832,10 +822,6 @@ export namespace Prisma {
             args: Prisma.LeadUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.LeadUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LeadPayload>[]
-          }
           upsert: {
             args: Prisma.LeadUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$LeadPayload>
@@ -906,10 +892,6 @@ export namespace Prisma {
             args: Prisma.CampaignUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.CampaignUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>[]
-          }
           upsert: {
             args: Prisma.CampaignUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$CampaignPayload>
@@ -979,10 +961,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.LeadCampaignUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.LeadCampaignUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LeadCampaignPayload>[]
           }
           upsert: {
             args: Prisma.LeadCampaignUpsertArgs<ExtArgs>
@@ -1069,28 +1047,8 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
-    /**
-     * Global configuration for omitting model fields by default.
-     * 
-     * @example
-     * ```
-     * const prisma = new PrismaClient({
-     *   omit: {
-     *     user: {
-     *       password: true
-     *     }
-     *   }
-     * })
-     * ```
-     */
-    omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {
-    group?: GroupOmit
-    lead?: LeadOmit
-    campaign?: CampaignOmit
-    leadCampaign?: LeadCampaignOmit
-  }
+
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -1131,7 +1089,6 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
-    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -1477,25 +1434,17 @@ export namespace Prisma {
     description?: boolean
   }, ExtArgs["result"]["group"]>
 
-  export type GroupSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    description?: boolean
-  }, ExtArgs["result"]["group"]>
-
   export type GroupSelectScalar = {
     id?: boolean
     name?: boolean
     description?: boolean
   }
 
-  export type GroupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description", ExtArgs["result"]["group"]>
   export type GroupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leads?: boolean | Group$leadsArgs<ExtArgs>
     _count?: boolean | GroupCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GroupIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type GroupIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $GroupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Group"
@@ -1512,12 +1461,12 @@ export namespace Prisma {
 
   type GroupGetPayload<S extends boolean | null | undefined | GroupDefaultArgs> = $Result.GetResult<Prisma.$GroupPayload, S>
 
-  type GroupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<GroupFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type GroupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<GroupFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: GroupCountAggregateInputType | true
     }
 
-  export interface GroupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface GroupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Group'], meta: { name: 'Group' } }
     /**
      * Find zero or one Group that matches the filter.
@@ -1530,10 +1479,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends GroupFindUniqueArgs>(args: SelectSubset<T, GroupFindUniqueArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends GroupFindUniqueArgs>(args: SelectSubset<T, GroupFindUniqueArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Group that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Group that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {GroupFindUniqueOrThrowArgs} args - Arguments to find a Group
      * @example
@@ -1544,7 +1493,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends GroupFindUniqueOrThrowArgs>(args: SelectSubset<T, GroupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends GroupFindUniqueOrThrowArgs>(args: SelectSubset<T, GroupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Group that matches the filter.
@@ -1559,7 +1508,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends GroupFindFirstArgs>(args?: SelectSubset<T, GroupFindFirstArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends GroupFindFirstArgs>(args?: SelectSubset<T, GroupFindFirstArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Group that matches the filter or
@@ -1575,7 +1524,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends GroupFindFirstOrThrowArgs>(args?: SelectSubset<T, GroupFindFirstOrThrowArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends GroupFindFirstOrThrowArgs>(args?: SelectSubset<T, GroupFindFirstOrThrowArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Groups that matches the filter.
@@ -1593,7 +1542,7 @@ export namespace Prisma {
      * const groupWithIdOnly = await prisma.group.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends GroupFindManyArgs>(args?: SelectSubset<T, GroupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends GroupFindManyArgs>(args?: SelectSubset<T, GroupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Group.
@@ -1607,7 +1556,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends GroupCreateArgs>(args: SelectSubset<T, GroupCreateArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends GroupCreateArgs>(args: SelectSubset<T, GroupCreateArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Groups.
@@ -1635,7 +1584,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Groups and only return the `id`
-     * const groupWithIdOnly = await prisma.group.createManyAndReturn({
+     * const groupWithIdOnly = await prisma.group.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1645,7 +1594,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends GroupCreateManyAndReturnArgs>(args?: SelectSubset<T, GroupCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends GroupCreateManyAndReturnArgs>(args?: SelectSubset<T, GroupCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Group.
@@ -1659,7 +1608,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends GroupDeleteArgs>(args: SelectSubset<T, GroupDeleteArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends GroupDeleteArgs>(args: SelectSubset<T, GroupDeleteArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Group.
@@ -1676,7 +1625,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends GroupUpdateArgs>(args: SelectSubset<T, GroupUpdateArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends GroupUpdateArgs>(args: SelectSubset<T, GroupUpdateArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Groups.
@@ -1712,36 +1661,6 @@ export namespace Prisma {
     updateMany<T extends GroupUpdateManyArgs>(args: SelectSubset<T, GroupUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Groups and returns the data updated in the database.
-     * @param {GroupUpdateManyAndReturnArgs} args - Arguments to update many Groups.
-     * @example
-     * // Update many Groups
-     * const group = await prisma.group.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Groups and only return the `id`
-     * const groupWithIdOnly = await prisma.group.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends GroupUpdateManyAndReturnArgs>(args: SelectSubset<T, GroupUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Group.
      * @param {GroupUpsertArgs} args - Arguments to update or create a Group.
      * @example
@@ -1758,7 +1677,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends GroupUpsertArgs>(args: SelectSubset<T, GroupUpsertArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends GroupUpsertArgs>(args: SelectSubset<T, GroupUpsertArgs<ExtArgs>>): Prisma__GroupClient<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -1898,9 +1817,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__GroupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__GroupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    leads<T extends Group$leadsArgs<ExtArgs> = {}>(args?: Subset<T, Group$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    leads<T extends Group$leadsArgs<ExtArgs> = {}>(args?: Subset<T, Group$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1928,7 +1847,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Group model
-   */
+   */ 
   interface GroupFieldRefs {
     readonly id: FieldRef<"Group", 'Int'>
     readonly name: FieldRef<"Group", 'String'>
@@ -1945,10 +1864,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Group
      */
     select?: GroupSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -1968,10 +1883,6 @@ export namespace Prisma {
      */
     select?: GroupSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GroupInclude<ExtArgs> | null
@@ -1989,10 +1900,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Group
      */
     select?: GroupSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2042,10 +1949,6 @@ export namespace Prisma {
      */
     select?: GroupSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GroupInclude<ExtArgs> | null
@@ -2094,10 +1997,6 @@ export namespace Prisma {
      */
     select?: GroupSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GroupInclude<ExtArgs> | null
@@ -2141,10 +2040,6 @@ export namespace Prisma {
      */
     select?: GroupSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GroupInclude<ExtArgs> | null
@@ -2174,10 +2069,6 @@ export namespace Prisma {
      */
     select?: GroupSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
-    /**
      * The data used to create many Groups.
      */
     data: GroupCreateManyInput | GroupCreateManyInput[]
@@ -2192,10 +2083,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Group
      */
     select?: GroupSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2222,36 +2109,6 @@ export namespace Prisma {
      * Filter which Groups to update
      */
     where?: GroupWhereInput
-    /**
-     * Limit how many Groups to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Group updateManyAndReturn
-   */
-  export type GroupUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Group
-     */
-    select?: GroupSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
-    /**
-     * The data used to update Groups.
-     */
-    data: XOR<GroupUpdateManyMutationInput, GroupUncheckedUpdateManyInput>
-    /**
-     * Filter which Groups to update
-     */
-    where?: GroupWhereInput
-    /**
-     * Limit how many Groups to update.
-     */
-    limit?: number
   }
 
   /**
@@ -2262,10 +2119,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Group
      */
     select?: GroupSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2293,10 +2146,6 @@ export namespace Prisma {
      */
     select?: GroupSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: GroupInclude<ExtArgs> | null
@@ -2314,10 +2163,6 @@ export namespace Prisma {
      * Filter which Groups to delete
      */
     where?: GroupWhereInput
-    /**
-     * Limit how many Groups to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -2328,10 +2173,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Lead
      */
     select?: LeadSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2352,10 +2193,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Group
      */
     select?: GroupSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2592,16 +2429,6 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["lead"]>
 
-  export type LeadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    email?: boolean
-    phone?: boolean
-    status?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["lead"]>
-
   export type LeadSelectScalar = {
     id?: boolean
     name?: boolean
@@ -2612,14 +2439,12 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type LeadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
   export type LeadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     groups?: boolean | Lead$groupsArgs<ExtArgs>
     campaigns?: boolean | Lead$campaignsArgs<ExtArgs>
     _count?: boolean | LeadCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type LeadIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type LeadIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $LeadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Lead"
@@ -2641,12 +2466,12 @@ export namespace Prisma {
 
   type LeadGetPayload<S extends boolean | null | undefined | LeadDefaultArgs> = $Result.GetResult<Prisma.$LeadPayload, S>
 
-  type LeadCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<LeadFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type LeadCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LeadFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: LeadCountAggregateInputType | true
     }
 
-  export interface LeadDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface LeadDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Lead'], meta: { name: 'Lead' } }
     /**
      * Find zero or one Lead that matches the filter.
@@ -2659,10 +2484,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends LeadFindUniqueArgs>(args: SelectSubset<T, LeadFindUniqueArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends LeadFindUniqueArgs>(args: SelectSubset<T, LeadFindUniqueArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Lead that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Lead that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {LeadFindUniqueOrThrowArgs} args - Arguments to find a Lead
      * @example
@@ -2673,7 +2498,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends LeadFindUniqueOrThrowArgs>(args: SelectSubset<T, LeadFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends LeadFindUniqueOrThrowArgs>(args: SelectSubset<T, LeadFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Lead that matches the filter.
@@ -2688,7 +2513,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends LeadFindFirstArgs>(args?: SelectSubset<T, LeadFindFirstArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends LeadFindFirstArgs>(args?: SelectSubset<T, LeadFindFirstArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Lead that matches the filter or
@@ -2704,7 +2529,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends LeadFindFirstOrThrowArgs>(args?: SelectSubset<T, LeadFindFirstOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends LeadFindFirstOrThrowArgs>(args?: SelectSubset<T, LeadFindFirstOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Leads that matches the filter.
@@ -2722,7 +2547,7 @@ export namespace Prisma {
      * const leadWithIdOnly = await prisma.lead.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends LeadFindManyArgs>(args?: SelectSubset<T, LeadFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends LeadFindManyArgs>(args?: SelectSubset<T, LeadFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Lead.
@@ -2736,7 +2561,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends LeadCreateArgs>(args: SelectSubset<T, LeadCreateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends LeadCreateArgs>(args: SelectSubset<T, LeadCreateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Leads.
@@ -2764,7 +2589,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Leads and only return the `id`
-     * const leadWithIdOnly = await prisma.lead.createManyAndReturn({
+     * const leadWithIdOnly = await prisma.lead.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2774,7 +2599,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends LeadCreateManyAndReturnArgs>(args?: SelectSubset<T, LeadCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends LeadCreateManyAndReturnArgs>(args?: SelectSubset<T, LeadCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Lead.
@@ -2788,7 +2613,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends LeadDeleteArgs>(args: SelectSubset<T, LeadDeleteArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends LeadDeleteArgs>(args: SelectSubset<T, LeadDeleteArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Lead.
@@ -2805,7 +2630,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends LeadUpdateArgs>(args: SelectSubset<T, LeadUpdateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends LeadUpdateArgs>(args: SelectSubset<T, LeadUpdateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Leads.
@@ -2841,36 +2666,6 @@ export namespace Prisma {
     updateMany<T extends LeadUpdateManyArgs>(args: SelectSubset<T, LeadUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Leads and returns the data updated in the database.
-     * @param {LeadUpdateManyAndReturnArgs} args - Arguments to update many Leads.
-     * @example
-     * // Update many Leads
-     * const lead = await prisma.lead.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Leads and only return the `id`
-     * const leadWithIdOnly = await prisma.lead.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends LeadUpdateManyAndReturnArgs>(args: SelectSubset<T, LeadUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Lead.
      * @param {LeadUpsertArgs} args - Arguments to update or create a Lead.
      * @example
@@ -2887,7 +2682,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends LeadUpsertArgs>(args: SelectSubset<T, LeadUpsertArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends LeadUpsertArgs>(args: SelectSubset<T, LeadUpsertArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -3027,10 +2822,10 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__LeadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__LeadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    groups<T extends Lead$groupsArgs<ExtArgs> = {}>(args?: Subset<T, Lead$groupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    campaigns<T extends Lead$campaignsArgs<ExtArgs> = {}>(args?: Subset<T, Lead$campaignsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    groups<T extends Lead$groupsArgs<ExtArgs> = {}>(args?: Subset<T, Lead$groupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GroupPayload<ExtArgs>, T, "findMany"> | Null>
+    campaigns<T extends Lead$campaignsArgs<ExtArgs> = {}>(args?: Subset<T, Lead$campaignsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3058,7 +2853,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Lead model
-   */
+   */ 
   interface LeadFieldRefs {
     readonly id: FieldRef<"Lead", 'Int'>
     readonly name: FieldRef<"Lead", 'String'>
@@ -3080,10 +2875,6 @@ export namespace Prisma {
      */
     select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadInclude<ExtArgs> | null
@@ -3102,10 +2893,6 @@ export namespace Prisma {
      */
     select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadInclude<ExtArgs> | null
@@ -3123,10 +2910,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Lead
      */
     select?: LeadSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3176,10 +2959,6 @@ export namespace Prisma {
      */
     select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadInclude<ExtArgs> | null
@@ -3228,10 +3007,6 @@ export namespace Prisma {
      */
     select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadInclude<ExtArgs> | null
@@ -3275,10 +3050,6 @@ export namespace Prisma {
      */
     select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadInclude<ExtArgs> | null
@@ -3308,10 +3079,6 @@ export namespace Prisma {
      */
     select?: LeadSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
      * The data used to create many Leads.
      */
     data: LeadCreateManyInput | LeadCreateManyInput[]
@@ -3326,10 +3093,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Lead
      */
     select?: LeadSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3356,36 +3119,6 @@ export namespace Prisma {
      * Filter which Leads to update
      */
     where?: LeadWhereInput
-    /**
-     * Limit how many Leads to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Lead updateManyAndReturn
-   */
-  export type LeadUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Lead
-     */
-    select?: LeadSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
-     * The data used to update Leads.
-     */
-    data: XOR<LeadUpdateManyMutationInput, LeadUncheckedUpdateManyInput>
-    /**
-     * Filter which Leads to update
-     */
-    where?: LeadWhereInput
-    /**
-     * Limit how many Leads to update.
-     */
-    limit?: number
   }
 
   /**
@@ -3396,10 +3129,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Lead
      */
     select?: LeadSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3427,10 +3156,6 @@ export namespace Prisma {
      */
     select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadInclude<ExtArgs> | null
@@ -3448,10 +3173,6 @@ export namespace Prisma {
      * Filter which Leads to delete
      */
     where?: LeadWhereInput
-    /**
-     * Limit how many Leads to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -3462,10 +3183,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Group
      */
     select?: GroupSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Group
-     */
-    omit?: GroupOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3487,10 +3204,6 @@ export namespace Prisma {
      */
     select?: LeadCampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadCampaignInclude<ExtArgs> | null
@@ -3510,10 +3223,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Lead
      */
     select?: LeadSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lead
-     */
-    omit?: LeadOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3731,14 +3440,6 @@ export namespace Prisma {
     endDate?: boolean
   }, ExtArgs["result"]["campaign"]>
 
-  export type CampaignSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    description?: boolean
-    startDate?: boolean
-    endDate?: boolean
-  }, ExtArgs["result"]["campaign"]>
-
   export type CampaignSelectScalar = {
     id?: boolean
     name?: boolean
@@ -3747,13 +3448,11 @@ export namespace Prisma {
     endDate?: boolean
   }
 
-  export type CampaignOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "startDate" | "endDate", ExtArgs["result"]["campaign"]>
   export type CampaignInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leads?: boolean | Campaign$leadsArgs<ExtArgs>
     _count?: boolean | CampaignCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CampaignIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type CampaignIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $CampaignPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Campaign"
@@ -3772,12 +3471,12 @@ export namespace Prisma {
 
   type CampaignGetPayload<S extends boolean | null | undefined | CampaignDefaultArgs> = $Result.GetResult<Prisma.$CampaignPayload, S>
 
-  type CampaignCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CampaignFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type CampaignCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CampaignFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: CampaignCountAggregateInputType | true
     }
 
-  export interface CampaignDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface CampaignDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Campaign'], meta: { name: 'Campaign' } }
     /**
      * Find zero or one Campaign that matches the filter.
@@ -3790,10 +3489,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends CampaignFindUniqueArgs>(args: SelectSubset<T, CampaignFindUniqueArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CampaignFindUniqueArgs>(args: SelectSubset<T, CampaignFindUniqueArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Campaign that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Campaign that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {CampaignFindUniqueOrThrowArgs} args - Arguments to find a Campaign
      * @example
@@ -3804,7 +3503,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CampaignFindUniqueOrThrowArgs>(args: SelectSubset<T, CampaignFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CampaignFindUniqueOrThrowArgs>(args: SelectSubset<T, CampaignFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Campaign that matches the filter.
@@ -3819,7 +3518,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends CampaignFindFirstArgs>(args?: SelectSubset<T, CampaignFindFirstArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CampaignFindFirstArgs>(args?: SelectSubset<T, CampaignFindFirstArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Campaign that matches the filter or
@@ -3835,7 +3534,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends CampaignFindFirstOrThrowArgs>(args?: SelectSubset<T, CampaignFindFirstOrThrowArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CampaignFindFirstOrThrowArgs>(args?: SelectSubset<T, CampaignFindFirstOrThrowArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Campaigns that matches the filter.
@@ -3853,7 +3552,7 @@ export namespace Prisma {
      * const campaignWithIdOnly = await prisma.campaign.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CampaignFindManyArgs>(args?: SelectSubset<T, CampaignFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CampaignFindManyArgs>(args?: SelectSubset<T, CampaignFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Campaign.
@@ -3867,7 +3566,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends CampaignCreateArgs>(args: SelectSubset<T, CampaignCreateArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CampaignCreateArgs>(args: SelectSubset<T, CampaignCreateArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Campaigns.
@@ -3895,7 +3594,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Campaigns and only return the `id`
-     * const campaignWithIdOnly = await prisma.campaign.createManyAndReturn({
+     * const campaignWithIdOnly = await prisma.campaign.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3905,7 +3604,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CampaignCreateManyAndReturnArgs>(args?: SelectSubset<T, CampaignCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CampaignCreateManyAndReturnArgs>(args?: SelectSubset<T, CampaignCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Campaign.
@@ -3919,7 +3618,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends CampaignDeleteArgs>(args: SelectSubset<T, CampaignDeleteArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CampaignDeleteArgs>(args: SelectSubset<T, CampaignDeleteArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Campaign.
@@ -3936,7 +3635,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CampaignUpdateArgs>(args: SelectSubset<T, CampaignUpdateArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CampaignUpdateArgs>(args: SelectSubset<T, CampaignUpdateArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Campaigns.
@@ -3972,36 +3671,6 @@ export namespace Prisma {
     updateMany<T extends CampaignUpdateManyArgs>(args: SelectSubset<T, CampaignUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Campaigns and returns the data updated in the database.
-     * @param {CampaignUpdateManyAndReturnArgs} args - Arguments to update many Campaigns.
-     * @example
-     * // Update many Campaigns
-     * const campaign = await prisma.campaign.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Campaigns and only return the `id`
-     * const campaignWithIdOnly = await prisma.campaign.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CampaignUpdateManyAndReturnArgs>(args: SelectSubset<T, CampaignUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Campaign.
      * @param {CampaignUpsertArgs} args - Arguments to update or create a Campaign.
      * @example
@@ -4018,7 +3687,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends CampaignUpsertArgs>(args: SelectSubset<T, CampaignUpsertArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CampaignUpsertArgs>(args: SelectSubset<T, CampaignUpsertArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -4158,9 +3827,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CampaignClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CampaignClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    leads<T extends Campaign$leadsArgs<ExtArgs> = {}>(args?: Subset<T, Campaign$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    leads<T extends Campaign$leadsArgs<ExtArgs> = {}>(args?: Subset<T, Campaign$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4188,7 +3857,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Campaign model
-   */
+   */ 
   interface CampaignFieldRefs {
     readonly id: FieldRef<"Campaign", 'Int'>
     readonly name: FieldRef<"Campaign", 'String'>
@@ -4208,10 +3877,6 @@ export namespace Prisma {
      */
     select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CampaignInclude<ExtArgs> | null
@@ -4230,10 +3895,6 @@ export namespace Prisma {
      */
     select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CampaignInclude<ExtArgs> | null
@@ -4251,10 +3912,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Campaign
      */
     select?: CampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4304,10 +3961,6 @@ export namespace Prisma {
      */
     select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CampaignInclude<ExtArgs> | null
@@ -4356,10 +4009,6 @@ export namespace Prisma {
      */
     select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CampaignInclude<ExtArgs> | null
@@ -4403,10 +4052,6 @@ export namespace Prisma {
      */
     select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CampaignInclude<ExtArgs> | null
@@ -4436,10 +4081,6 @@ export namespace Prisma {
      */
     select?: CampaignSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
      * The data used to create many Campaigns.
      */
     data: CampaignCreateManyInput | CampaignCreateManyInput[]
@@ -4454,10 +4095,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Campaign
      */
     select?: CampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4484,36 +4121,6 @@ export namespace Prisma {
      * Filter which Campaigns to update
      */
     where?: CampaignWhereInput
-    /**
-     * Limit how many Campaigns to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Campaign updateManyAndReturn
-   */
-  export type CampaignUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Campaign
-     */
-    select?: CampaignSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
-     * The data used to update Campaigns.
-     */
-    data: XOR<CampaignUpdateManyMutationInput, CampaignUncheckedUpdateManyInput>
-    /**
-     * Filter which Campaigns to update
-     */
-    where?: CampaignWhereInput
-    /**
-     * Limit how many Campaigns to update.
-     */
-    limit?: number
   }
 
   /**
@@ -4524,10 +4131,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Campaign
      */
     select?: CampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4555,10 +4158,6 @@ export namespace Prisma {
      */
     select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: CampaignInclude<ExtArgs> | null
@@ -4576,10 +4175,6 @@ export namespace Prisma {
      * Filter which Campaigns to delete
      */
     where?: CampaignWhereInput
-    /**
-     * Limit how many Campaigns to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -4590,10 +4185,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the LeadCampaign
      */
     select?: LeadCampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4614,10 +4205,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Campaign
      */
     select?: CampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Campaign
-     */
-    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -4823,30 +4410,17 @@ export namespace Prisma {
     lead?: boolean | LeadDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["leadCampaign"]>
 
-  export type LeadCampaignSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    leadId?: boolean
-    campaignId?: boolean
-    status?: boolean
-    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
-    lead?: boolean | LeadDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["leadCampaign"]>
-
   export type LeadCampaignSelectScalar = {
     leadId?: boolean
     campaignId?: boolean
     status?: boolean
   }
 
-  export type LeadCampaignOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"leadId" | "campaignId" | "status", ExtArgs["result"]["leadCampaign"]>
   export type LeadCampaignInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     campaign?: boolean | CampaignDefaultArgs<ExtArgs>
     lead?: boolean | LeadDefaultArgs<ExtArgs>
   }
   export type LeadCampaignIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
-    lead?: boolean | LeadDefaultArgs<ExtArgs>
-  }
-  export type LeadCampaignIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     campaign?: boolean | CampaignDefaultArgs<ExtArgs>
     lead?: boolean | LeadDefaultArgs<ExtArgs>
   }
@@ -4867,12 +4441,12 @@ export namespace Prisma {
 
   type LeadCampaignGetPayload<S extends boolean | null | undefined | LeadCampaignDefaultArgs> = $Result.GetResult<Prisma.$LeadCampaignPayload, S>
 
-  type LeadCampaignCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<LeadCampaignFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type LeadCampaignCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LeadCampaignFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: LeadCampaignCountAggregateInputType | true
     }
 
-  export interface LeadCampaignDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface LeadCampaignDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LeadCampaign'], meta: { name: 'LeadCampaign' } }
     /**
      * Find zero or one LeadCampaign that matches the filter.
@@ -4885,10 +4459,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends LeadCampaignFindUniqueArgs>(args: SelectSubset<T, LeadCampaignFindUniqueArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends LeadCampaignFindUniqueArgs>(args: SelectSubset<T, LeadCampaignFindUniqueArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one LeadCampaign that matches the filter or throw an error with `error.code='P2025'`
+     * Find one LeadCampaign that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {LeadCampaignFindUniqueOrThrowArgs} args - Arguments to find a LeadCampaign
      * @example
@@ -4899,7 +4473,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends LeadCampaignFindUniqueOrThrowArgs>(args: SelectSubset<T, LeadCampaignFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends LeadCampaignFindUniqueOrThrowArgs>(args: SelectSubset<T, LeadCampaignFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first LeadCampaign that matches the filter.
@@ -4914,7 +4488,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends LeadCampaignFindFirstArgs>(args?: SelectSubset<T, LeadCampaignFindFirstArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends LeadCampaignFindFirstArgs>(args?: SelectSubset<T, LeadCampaignFindFirstArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first LeadCampaign that matches the filter or
@@ -4930,7 +4504,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends LeadCampaignFindFirstOrThrowArgs>(args?: SelectSubset<T, LeadCampaignFindFirstOrThrowArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends LeadCampaignFindFirstOrThrowArgs>(args?: SelectSubset<T, LeadCampaignFindFirstOrThrowArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more LeadCampaigns that matches the filter.
@@ -4948,7 +4522,7 @@ export namespace Prisma {
      * const leadCampaignWithLeadIdOnly = await prisma.leadCampaign.findMany({ select: { leadId: true } })
      * 
      */
-    findMany<T extends LeadCampaignFindManyArgs>(args?: SelectSubset<T, LeadCampaignFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends LeadCampaignFindManyArgs>(args?: SelectSubset<T, LeadCampaignFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a LeadCampaign.
@@ -4962,7 +4536,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends LeadCampaignCreateArgs>(args: SelectSubset<T, LeadCampaignCreateArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends LeadCampaignCreateArgs>(args: SelectSubset<T, LeadCampaignCreateArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many LeadCampaigns.
@@ -4990,7 +4564,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many LeadCampaigns and only return the `leadId`
-     * const leadCampaignWithLeadIdOnly = await prisma.leadCampaign.createManyAndReturn({
+     * const leadCampaignWithLeadIdOnly = await prisma.leadCampaign.createManyAndReturn({ 
      *   select: { leadId: true },
      *   data: [
      *     // ... provide data here
@@ -5000,7 +4574,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends LeadCampaignCreateManyAndReturnArgs>(args?: SelectSubset<T, LeadCampaignCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends LeadCampaignCreateManyAndReturnArgs>(args?: SelectSubset<T, LeadCampaignCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a LeadCampaign.
@@ -5014,7 +4588,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends LeadCampaignDeleteArgs>(args: SelectSubset<T, LeadCampaignDeleteArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends LeadCampaignDeleteArgs>(args: SelectSubset<T, LeadCampaignDeleteArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one LeadCampaign.
@@ -5031,7 +4605,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends LeadCampaignUpdateArgs>(args: SelectSubset<T, LeadCampaignUpdateArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends LeadCampaignUpdateArgs>(args: SelectSubset<T, LeadCampaignUpdateArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more LeadCampaigns.
@@ -5067,36 +4641,6 @@ export namespace Prisma {
     updateMany<T extends LeadCampaignUpdateManyArgs>(args: SelectSubset<T, LeadCampaignUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more LeadCampaigns and returns the data updated in the database.
-     * @param {LeadCampaignUpdateManyAndReturnArgs} args - Arguments to update many LeadCampaigns.
-     * @example
-     * // Update many LeadCampaigns
-     * const leadCampaign = await prisma.leadCampaign.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more LeadCampaigns and only return the `leadId`
-     * const leadCampaignWithLeadIdOnly = await prisma.leadCampaign.updateManyAndReturn({
-     *   select: { leadId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends LeadCampaignUpdateManyAndReturnArgs>(args: SelectSubset<T, LeadCampaignUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one LeadCampaign.
      * @param {LeadCampaignUpsertArgs} args - Arguments to update or create a LeadCampaign.
      * @example
@@ -5113,7 +4657,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends LeadCampaignUpsertArgs>(args: SelectSubset<T, LeadCampaignUpsertArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends LeadCampaignUpsertArgs>(args: SelectSubset<T, LeadCampaignUpsertArgs<ExtArgs>>): Prisma__LeadCampaignClient<$Result.GetResult<Prisma.$LeadCampaignPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -5253,10 +4797,10 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__LeadCampaignClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__LeadCampaignClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    campaign<T extends CampaignDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CampaignDefaultArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    lead<T extends LeadDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LeadDefaultArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    campaign<T extends CampaignDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CampaignDefaultArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    lead<T extends LeadDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LeadDefaultArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5284,7 +4828,7 @@ export namespace Prisma {
 
   /**
    * Fields of the LeadCampaign model
-   */
+   */ 
   interface LeadCampaignFieldRefs {
     readonly leadId: FieldRef<"LeadCampaign", 'Int'>
     readonly campaignId: FieldRef<"LeadCampaign", 'Int'>
@@ -5301,10 +4845,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the LeadCampaign
      */
     select?: LeadCampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5324,10 +4864,6 @@ export namespace Prisma {
      */
     select?: LeadCampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadCampaignInclude<ExtArgs> | null
@@ -5345,10 +4881,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the LeadCampaign
      */
     select?: LeadCampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5398,10 +4930,6 @@ export namespace Prisma {
      */
     select?: LeadCampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadCampaignInclude<ExtArgs> | null
@@ -5450,10 +4978,6 @@ export namespace Prisma {
      */
     select?: LeadCampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadCampaignInclude<ExtArgs> | null
@@ -5497,10 +5021,6 @@ export namespace Prisma {
      */
     select?: LeadCampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadCampaignInclude<ExtArgs> | null
@@ -5530,10 +5050,6 @@ export namespace Prisma {
      */
     select?: LeadCampaignSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
      * The data used to create many LeadCampaigns.
      */
     data: LeadCampaignCreateManyInput | LeadCampaignCreateManyInput[]
@@ -5552,10 +5068,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the LeadCampaign
      */
     select?: LeadCampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5582,40 +5094,6 @@ export namespace Prisma {
      * Filter which LeadCampaigns to update
      */
     where?: LeadCampaignWhereInput
-    /**
-     * Limit how many LeadCampaigns to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * LeadCampaign updateManyAndReturn
-   */
-  export type LeadCampaignUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LeadCampaign
-     */
-    select?: LeadCampaignSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
-     * The data used to update LeadCampaigns.
-     */
-    data: XOR<LeadCampaignUpdateManyMutationInput, LeadCampaignUncheckedUpdateManyInput>
-    /**
-     * Filter which LeadCampaigns to update
-     */
-    where?: LeadCampaignWhereInput
-    /**
-     * Limit how many LeadCampaigns to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LeadCampaignIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5626,10 +5104,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the LeadCampaign
      */
     select?: LeadCampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5657,10 +5131,6 @@ export namespace Prisma {
      */
     select?: LeadCampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
-    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LeadCampaignInclude<ExtArgs> | null
@@ -5678,10 +5148,6 @@ export namespace Prisma {
      * Filter which LeadCampaigns to delete
      */
     where?: LeadCampaignWhereInput
-    /**
-     * Limit how many LeadCampaigns to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -5692,10 +5158,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the LeadCampaign
      */
     select?: LeadCampaignSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the LeadCampaign
-     */
-    omit?: LeadCampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5784,7 +5246,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references
+   * Field references 
    */
 
 
@@ -6056,8 +5518,8 @@ export namespace Prisma {
     leadId?: IntFilter<"LeadCampaign"> | number
     campaignId?: IntFilter<"LeadCampaign"> | number
     status?: EnumLeadCampaignStatusFilter<"LeadCampaign"> | $Enums.LeadCampaignStatus
-    campaign?: XOR<CampaignScalarRelationFilter, CampaignWhereInput>
-    lead?: XOR<LeadScalarRelationFilter, LeadWhereInput>
+    campaign?: XOR<CampaignRelationFilter, CampaignWhereInput>
+    lead?: XOR<LeadRelationFilter, LeadWhereInput>
   }
 
   export type LeadCampaignOrderByWithRelationInput = {
@@ -6076,8 +5538,8 @@ export namespace Prisma {
     leadId?: IntFilter<"LeadCampaign"> | number
     campaignId?: IntFilter<"LeadCampaign"> | number
     status?: EnumLeadCampaignStatusFilter<"LeadCampaign"> | $Enums.LeadCampaignStatus
-    campaign?: XOR<CampaignScalarRelationFilter, CampaignWhereInput>
-    lead?: XOR<LeadScalarRelationFilter, LeadWhereInput>
+    campaign?: XOR<CampaignRelationFilter, CampaignWhereInput>
+    lead?: XOR<LeadRelationFilter, LeadWhereInput>
   }, "leadId_campaignId">
 
   export type LeadCampaignOrderByWithAggregationInput = {
@@ -6580,12 +6042,12 @@ export namespace Prisma {
     not?: NestedEnumLeadCampaignStatusFilter<$PrismaModel> | $Enums.LeadCampaignStatus
   }
 
-  export type CampaignScalarRelationFilter = {
+  export type CampaignRelationFilter = {
     is?: CampaignWhereInput
     isNot?: CampaignWhereInput
   }
 
-  export type LeadScalarRelationFilter = {
+  export type LeadRelationFilter = {
     is?: LeadWhereInput
     isNot?: LeadWhereInput
   }
@@ -7383,6 +6845,38 @@ export namespace Prisma {
   }
 
 
+
+  /**
+   * Aliases for legacy arg types
+   */
+    /**
+     * @deprecated Use GroupCountOutputTypeDefaultArgs instead
+     */
+    export type GroupCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GroupCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LeadCountOutputTypeDefaultArgs instead
+     */
+    export type LeadCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LeadCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CampaignCountOutputTypeDefaultArgs instead
+     */
+    export type CampaignCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CampaignCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use GroupDefaultArgs instead
+     */
+    export type GroupArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GroupDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LeadDefaultArgs instead
+     */
+    export type LeadArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LeadDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CampaignDefaultArgs instead
+     */
+    export type CampaignArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CampaignDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LeadCampaignDefaultArgs instead
+     */
+    export type LeadCampaignArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LeadCampaignDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
