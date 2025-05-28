@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registered E-mails</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1> Registered E-mails</h1>
+    <ul>
+      <% emails.forEach(email=> { %>
+        <li>
+          <span>
+            <%= email %>
+          </span>
+          <span>
+            <form action="/emails/delete" method="post">
+              <input type="hidden" name="email" value="<%= email %>">
+              <button type="submit" class="btn-delete">Delete</button>
+            </form>
+          </span>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+</body>
+
+</html>
